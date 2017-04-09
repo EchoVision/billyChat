@@ -35,6 +35,7 @@ class Billy {
       response = body.results[Math.floor(Math.random() * (max - min + 1)) + min].title;
       //body.results[Math.floor((Math.random * num)+1)].title;
       room.emit('newMessage', generateMessage('nytimes', response ));
+      string = response;
     })
     }
     this.counter++;
