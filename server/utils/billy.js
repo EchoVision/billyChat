@@ -1,5 +1,4 @@
 const Cleverbot = require('cleverbot-node');
-const $ = require("jQuery");
 const {generateMessage} = require('./message.js');
 
 class Billy {
