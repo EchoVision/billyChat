@@ -38,12 +38,6 @@ io.on('connection',(socket) => {
 		}
 		callback();
 	});
-	socket.on('createLocationMessage', (coordinates, callback) => {
-		var user = users.getUser(socket.id);
-		if (user) {
-			io.to(user.room).emit('newLocationMessage', generateLocationMessage(user.name, coordinates.latitude, coordinates.longitude));
-		}
-	});
 	socket.on('disconnect', () => {
 		var user = users.removeUser(socket.id);
 		if (user) {
