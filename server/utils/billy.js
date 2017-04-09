@@ -20,16 +20,6 @@ class Billy {
       string.replace("Billy", "");
     }
 
-    /*
-    this.bot.query(string).then(
-      function (res) {
-        //obj = JSON.parse(JSON.stringify(res));
-        //console.log(obj);
-        response = res.output;
-        console.log("res1" + response);
-        done = true;
-      }
-    )*/
     this.counter++;
     this.bot.write(string, function (res) {
       response = res.output;
@@ -39,12 +29,8 @@ class Billy {
     }
     });
 
-    console.log("res2"+response);
-
-    //console.log(string);
     if (string.includes("billy") || string.includes("Billy") || this.counter % 7 == 0) {
       this.counter = 0; // reset counter
-      //console.log(response);
       return response;
     }
     return response;
