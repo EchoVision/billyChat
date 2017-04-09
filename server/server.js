@@ -6,6 +6,7 @@ const socket = require('socket.io');
 const {generateMessage} = require('./utils/message.js');
 const {isRealString} = require('./utils/validation.js');
 const {Users} = require('./utils/users.js');
+const {Billy} = require('./utils/billy.js');
 
 const publicPath = path.join(__dirname, '/../public');
 const port = process.env.PORT || 3000;
@@ -14,6 +15,7 @@ var app = express();
 var server = http.createServer(app);
 var io = socket(server);
 var users = new Users();
+var billys = {};
 
 app.use(express.static(publicPath));
 io.on('connection',(socket) => {
@@ -35,6 +37,15 @@ io.on('connection',(socket) => {
 		var user = users.getUser(socket.id);
 		if (user && isRealString(message.text)) {
 			io.to(user.room).emit('newMessage', generateMessage(user.name, message.text));
+			if(!billys.hasOwnProperty(user.room)){
+				billys[user.room] = new Billy();
+				console.log("created new billy");
+			}
+			var billyMessage = billys[user.room].getResponse(message.text);
+			console.log(billyMessage);
+				if(billyMessage != undefined){
+					io.to(user.room).emit('newMessage', generateMessage('billy', billyMessage));
+				}
 		}
 		callback();
 	});

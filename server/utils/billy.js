@@ -1,27 +1,38 @@
 const Cleverbot = require('cleverbot');
 
 class Billy {
-  var counter = 0;
-  let bot;
   constructor() {
+    this.counter = 0;
     this.bot = new Cleverbot({
       key: 'CC1mgNLwnCwJc5znc-9X6M0Bv9Q'
     });
   }
 
-  function getResponse(string) {
+  getResponse(string) {
     var response;
-    cleverbot.query(string).then(
+    var obj;
+    var done = false;
+    this.bot.query(string).then(
       function (res) {
-        response = res;
+        //obj = JSON.parse(JSON.stringify(res));
+        //console.log(obj);
+        response = res.output;
+        console.log("res1"+response);
+        done = true;
       }
     )
-    counter++;
-    if (string.includes("billy") || string.includes("Billy") || counter % 7 == 0) {
-      counter = 0; // reset counter
+    while(done !=true){
+      
+    }
+    //console.log("res2"+response);
+    this.counter++;
+    //console.log(string);
+    if (string.includes("billy") || string.includes("Billy") || this.counter % 7 == 0) {
+      this.counter = 0; // reset counter
+      //console.log(response);
       return response;
     }
-    return null; 
+    return response; 
   }
 }
 
