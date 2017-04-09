@@ -41,11 +41,12 @@ io.on('connection',(socket) => {
 				billys[user.room] = new Billy();
 				console.log("created new billy");
 			}
-			var billyMessage = billys[user.room].getResponse(message.text);
-			console.log(billyMessage);
+			billys[user.room].getResponse(message.text, io.to(user.room))
+			//var billyMessage = billys[user.room].getResponse(message.text);
+			/*console.log(billyMessage);
 				if(billyMessage != undefined){
 					io.to(user.room).emit('newMessage', generateMessage('billy', billyMessage));
-				}
+				}*/
 		}
 		callback();
 	});
