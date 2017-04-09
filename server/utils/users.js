@@ -12,7 +12,6 @@ class Users {
 		if (user) {
 			this.users = this.users.filter((user) => user.id !== id);
 		}
-
 		return user;
 	}
 	getUser (id) {
@@ -21,9 +20,7 @@ class Users {
 	getUserList (room) {
 		var users = this.users.filter((user) => user.room === room);
 		var namesArray = users.map((user) => user.name);
-
 		return namesArray;
 	}
 }
-
 module.exports = {Users};

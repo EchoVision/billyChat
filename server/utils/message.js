@@ -1,5 +1,4 @@
 const moment = require('moment');
-
 var generateMessage = (from, text) => {
 	return {
 		from,
@@ -7,6 +6,4 @@ var generateMessage = (from, text) => {
 		createdAt: moment().valueOf()
 	};
 };
-
-
-module.exports = {generateMessage, generateLocationMessage};
+module.exports = {generateMessage};
