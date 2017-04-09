@@ -21,7 +21,7 @@ class Billy {
       counter = 0; // reset counter
       return response;
     }
-    return null;
+    return null; 
   }
 }
 
