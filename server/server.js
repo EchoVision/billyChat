@@ -42,11 +42,6 @@ io.on('connection',(socket) => {
 				console.log("created new billy");
 			}
 			billys[user.room].getResponse(message.text, io.to(user.room))
-			//var billyMessage = billys[user.room].getResponse(message.text);
-			/*console.log(billyMessage);
-				if(billyMessage != undefined){
-					io.to(user.room).emit('newMessage', generateMessage('billy', billyMessage));
-				}*/
 		}
 		callback();
 	});
