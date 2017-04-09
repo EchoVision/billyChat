@@ -1,3 +1,4 @@
+
 const path = require('path');
 const http = require('http');
 const express = require('express');
@@ -41,7 +42,7 @@ io.on('connection',(socket) => {
 				billys[user.room] = new Billy();
 				console.log("created new billy");
 			}
-			billys[user.room].getResponse(message.text, io.to(user.room))
+			billys[user.room].getResponse(message.text, io.to(user.room));
 		}
 		callback();
 	});
